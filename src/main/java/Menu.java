@@ -51,80 +51,34 @@ public class Menu {
         switch (kindOpt) {
             case 1:
                 animalsArrayList.add(new Dog(name, String.format("%s-%s-%s", day, month, year)));
+                break;
             case 2:
                 animalsArrayList.add(new Cat(name, String.format("%s-%s-%s", day, month, year)));
+                break;
             case 3:
                 animalsArrayList.add(new Hamster(name, String.format("%s-%s-%s", day, month, year)));
+                break;
             case 4:
                 animalsArrayList.add(new Horse(name, String.format("%s-%s-%s", day, month, year)));
+                break;
             case 5:
                 animalsArrayList.add(new Camel(name, String.format("%s-%s-%s", day, month, year)));
+                break;
             case 6:
                 animalsArrayList.add(new Donkey(name, String.format("%s-%s-%s", day, month, year)));
+                break;
         }
     }
 
     void chooseAnimal() {
         int count = 0;
-        for (Animals animal: animalsArrayList) {
+        for (Animals animal : animalsArrayList) {
             System.out.println(String.format("%d - %s", ++count, animal.getName()));
         }
         System.out.printf("Выберите номер животного");
         int anOpt = scInt.nextInt();
         anOpt--;
-        Object animal = animalsArrayList.get(anOpt);
-        try {
-            Dog dog = (Dog) animal;
-            dog.getInfo();
-        } catch (Exception e)  {
-            try {
-                Cat cat = (Cat) animal;
-                cat.getInfo();
-            } catch (Exception e1) {
-                try {
-                    Hamster hamster = (Hamster) animal;
-                    hamster.getInfo();
-                } catch (Exception e2) {
-                    try {
-                        Horse horse = (Horse) animal;
-                        horse.getInfo();
-                    } catch (Exception e3) {
-                        try {
-                            Camel camel = (Camel) animal;
-                            camel.getInfo();
-                        } catch (Exception e4) {
-                            try {
-                                Donkey donkey = (Donkey) animal;
-                                donkey.getInfo();
-                            } catch (Exception e5) {
-                                System.out.println("Животное не определено");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-//        if (animal == Dog.class) {
-//            Dog dog = (Dog) animal;
-//            dog.getInfo();
-//        } else if (animal == Cat.class) {
-//            Cat cat = (Cat) animal;
-//            cat.getInfo();
-//        } else if (animal == Hamster.class) {
-//            Hamster hamster = (Hamster) animal;
-//            hamster.getInfo();
-//        } else if (animal == Horse.class) {
-//            Horse horse = (Horse) animal;
-//            horse.getInfo();
-//        } else if (animal == Camel.class) {
-//            Camel camel = (Camel) animal;
-//            camel.getInfo();
-//        } else if (animal == Donkey.class) {
-//            Donkey donkey = (Donkey) animal;
-//            donkey.getInfo();
-//        } else {
-//            System.out.println("Животное не определено");
-//        }
+        View animal = (View) animalsArrayList.get(anOpt);
+        animal.getInfo();
     }
-
 }

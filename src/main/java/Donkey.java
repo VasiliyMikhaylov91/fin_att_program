@@ -1,4 +1,4 @@
-public class Donkey extends MountAnimals{
+public class Donkey extends MountAnimals implements View{
     private String kind;
 
     Donkey(String name, String birthDate) {
@@ -6,7 +6,7 @@ public class Donkey extends MountAnimals{
         kind = "Donkey";
     }
 
-    void getInfo() {
+    public void getInfo() {
         System.out.println(String.format("name: %s", getName()));
         System.out.println(String.format("sort: %s", getSort()));
         System.out.println(String.format("kind: %s", kind));
