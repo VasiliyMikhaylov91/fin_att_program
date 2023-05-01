@@ -7,6 +7,7 @@ public class Menu {
     ArrayList<Animals> animalsArrayList = new ArrayList();
     Scanner scInt = new Scanner(System.in);
     Scanner scStr = new Scanner(System.in);
+    AnimalCounter ac = new AnimalCounter();
 
     public void process() {
         boolean cont = true;
@@ -18,7 +19,12 @@ public class Menu {
             int opt = scInt.nextInt();
             switch (opt) {
                 case 1:
-                    addAnimal();
+                    try {
+                        addAnimal();
+                        ac.addAnimal();
+                    } catch (BadData e) {
+                        System.out.println(e);
+                    }
                     break;
                 case 2:
                     chooseAnimal();
@@ -30,7 +36,7 @@ public class Menu {
         }
     }
 
-    private void addAnimal() {
+    void addAnimal() throws BadData{
         System.out.printf("Введите имя животного: ");
         String name = scStr.nextLine();
         System.out.println("Выберите вид животного: ");
@@ -48,6 +54,9 @@ public class Menu {
         String month = scStr.nextLine();
         System.out.printf("Введите день рождения животного: ");
         String day = scStr.nextLine();
+        if (name.equals("") || year.equals("") || month.equals("") || day.equals("")) {
+            throw new BadData();
+        }
         switch (kindOpt) {
             case 1:
                 animalsArrayList.add(new Dog(name, String.format("%s-%s-%s", day, month, year)));
