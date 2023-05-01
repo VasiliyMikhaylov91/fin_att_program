@@ -75,10 +75,27 @@ public class Menu {
         for (Animals animal : animalsArrayList) {
             System.out.println(String.format("%d - %s", ++count, animal.getName()));
         }
-        System.out.printf("Выберите номер животного");
+        System.out.printf("Выберите номер животного: ");
         int anOpt = scInt.nextInt();
         anOpt--;
-        View animal = (View) animalsArrayList.get(anOpt);
-        animal.getInfo();
+        workWithAnimal(animalsArrayList.get(anOpt));
+    }
+
+    void workWithAnimal(Animals animal) {
+        boolean cont = true;
+        while (cont) {
+            ((View) animal).getInfo();
+            System.out.println("1 - Выучить новую команду");
+            System.out.println("2 - Закончить работы с животным");
+            System.out.printf("Выберите действие: ");
+            String learnOpt = scInt.nextLine();
+            if ("1".equals(learnOpt)) {
+                System.out.printf("Введите название команды: ");
+                String command = scInt.nextLine();
+                animal.learnNewCommand(command);
+            } else if ("2".equals(learnOpt)) {
+                cont = false;
+            }
+        }
     }
 }

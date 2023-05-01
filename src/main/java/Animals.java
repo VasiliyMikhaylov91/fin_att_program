@@ -12,7 +12,7 @@ public abstract class Animals {
         commands = new ArrayList<>();
     }
 
-    void learnNewCommand (String newCommand) {
+    public void learnNewCommand (String newCommand) {
         commands.add(newCommand);
     }
 
@@ -30,4 +30,5 @@ public abstract class Animals {
     String getBirthDate() {
         return birthDate;
     }
+
 }
